@@ -2,8 +2,10 @@ import sys, textwrap
 
 try:
     from PIL import Image, ImageDraw, ImageFont, ImageFilter
+    #from resizeimage import resizeimage #not neeed it seems
 except ImportError:
-    print("Please install Pillow from: https://pypi.python.org/pypi/Pillow/3.0.0")
+    print("Please install Pillow from: https://pypi.org/project/Pillow/#files")
+    #print("Please install resize-image from: https://pypi.org/project/python-resize-image/#files") #not needed it seems
     sys.exit(1)
 
 MHDL = 'MAIN HEADLINE' # MHDL = MAINHEADLINE
@@ -40,22 +42,49 @@ for line2 in SHDLSPL:
     current_h += h + pad
 
 
-#Define logo images by name
+#load logo images
 im1 = Image.open('01.png')
 im2 = Image.open('02.png')
 im3 = Image.open('03.png')
 im4 = Image.open('04.png')
 
-#L01POS = 2, 1
+#resizue images to Xand Y to 25% of Thumbnail size, better use some images in 1:1 ratio giiirrrlllll
+#im1
+resizedImage = im1.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25)))
+resizedImage.save("img_01_rezised.png")
+
+#im2
+resizedImage = im2.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25)))
+resizedImage.save("img_02_rezised.png")
+
+#im3
+resizedImage = im3.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25)))
+resizedImage.save("img_03_rezised.png")
+
+#im4
+resizedImage = im4.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25)))
+resizedImage.save("img_04_rezised.png")
+
+#Close original images
+im1.close
+im2.close
+im3.close
+im4.close
+
+#Load rezized logo images 
+rim1 = Image.open('img_01_rezised.png')
+rim2 = Image.open('img_02_rezised.png')
+rim3 = Image.open('img_03_rezised.png')
+rim4 = Image.open('img_04_rezised.png')
 
 
 #add logo image to background, define them as mask to use transparency, position thmen based on file size
 BIM = BIM.copy()
 XPOS = (XMAX//100) #to position logos based on image size
-BIM.paste(im1, (0, 50), im1) 
-BIM.paste(im2, ((XPOS*25), 50), im2)
-BIM.paste(im3, ((XPOS*50), 50), im3)
-BIM.paste(im4, ((XPOS*75), 50), im4)
+BIM.paste(rim1, (0, 50), rim1) 
+BIM.paste(rim2, ((XPOS*25), 50), rim2)
+BIM.paste(rim3, ((XPOS*50), 50), rim3)
+BIM.paste(rim4, ((XPOS*75), 50), rim4)
 
 
 #BIM.save('genrated_test.png')
