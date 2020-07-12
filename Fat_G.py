@@ -89,5 +89,3 @@ BIM.paste(rim4, ((XPOS*75), 50), rim4)
 
 #BIM.save('genrated_test.png')
 BIM.show()
-
-#Logo size single image 250x250 = per logo 25% of image width / max 4 logos.
