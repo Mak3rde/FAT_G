@@ -46,18 +46,18 @@ im2 = Image.open('02.png')
 im3 = Image.open('03.png')
 im4 = Image.open('04.png')
 
-L01POS = 2, 1
+#L01POS = 2, 1
 
 
 #add logo image to background, define them as mask to use transparency, position thmen based on file size
 BIM = BIM.copy()
-BIM.paste(im1, ((L01POS), 50), im1)
+BIM.paste(im1, (0, 50), im1)
 BIM.paste(im2, (250, 50), im2)
 BIM.paste(im3, (500, 50), im3)
 BIM.paste(im4, (750, 50), im4)
 
 
-#BIM.save('test.png')
+BIM.save('genrated_test.png')
 BIM.show()
 
 #Logo size single image 250x250 = per logo 25% of image width / max 4 logos.
