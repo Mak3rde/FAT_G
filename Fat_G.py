@@ -1,11 +1,13 @@
 import sys, textwrap
+from tkinter import *  #loads everything from tk inter 
+from tkinter import filedialog # loads dialog box
+import tkinter as tk
 
 try:
-    from PIL import Image, ImageDraw, ImageFont, ImageFilter
-    #from resizeimage import resizeimage #not neeed it seems
+    from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageTk  
 except ImportError:
-    print("Please install Pillow from: https://pypi.org/project/Pillow/#files")
-    #print("Please install resize-image from: https://pypi.org/project/python-resize-image/#files") #not needed it seems
+    print("Please install Pillow from: the web")
+    #print("Please install resize-image from: the web") #not needed it seems
     sys.exit(1)
 
 MHDL = 'MAIN HEADLINE' # MHDL = MAINHEADLINE
@@ -87,5 +89,64 @@ BIM.paste(rim3, ((XPOS*50), 50), rim3)
 BIM.paste(rim4, ((XPOS*75), 50), rim4)
 
 
-#BIM.save('genrated_test.png')
-BIM.show()
+BIM.save('genrated_test.png')
+#BIM.show()
+
+# create windows 
+root = Tk() 
+
+# title
+root.title("FAT G") 
+
+# window size
+root.geometry("1500x1000") 
+
+# make Window to be resizable 
+#root.resizable(width = True, height = True) 
+
+#defines open image
+def open_img(): 
+	# Select the Imagename from a folder 
+	x = openfilename() 
+
+	# opens the image 
+	img = Image.open(x) 
+	
+	# resize the image and apply a high-quality down sampling filter 
+	img = img.resize((250, 250), Image.ANTIALIAS) 
+
+	# PhotoImage class is used to add image to widgets, icons etc 
+	img = ImageTk.PhotoImage(img) 
+
+	# create a label 
+	panel = Label(root, image = img) 
+	
+	# set the image as img 
+	panel.image = img 
+	panel.grid(row = 2) 
+
+#defines open filename
+def openfilename(): 
+
+	# open file dialog box to select image 
+	# The dialogue box has a title "Open" 
+	filename = filedialog.askopenfilename(title ='"pen') 
+	return filename 
+
+# Create a Button
+buttonClose = Button(root, text = 'KiLL that FATG', bd = '5', 
+                          command = root.destroy)                         
+buttonClose.pack()
+buttonClose.place(x = 50, y = 50, bordermode=OUTSIDE, height=30, width=80)
+
+ # loading the image 
+img = ImageTk.PhotoImage(Image.open("genrated_test.png")) 
+  
+# reading the image 
+panel = tk.Label(root, image = img) 
+  
+# setting the application 
+panel.pack(side = "bottom", fill = "both", 
+           expand = "yes") 
+
+root.mainloop() 
