@@ -95,14 +95,16 @@ BIM.save('genrated_test.png')
 # create windows 
 root = Tk() 
 
+root.configure(background='#000000')
+
 # title
 root.title("FAT G") 
 
 # window size
 root.geometry("1500x1000") 
 
-# make Window to be resizable 
-#root.resizable(width = True, height = True) 
+# make Window not resizable 
+root.resizable(width = False, height = False) 
 
 #defines open image
 def open_img(): 
@@ -133,11 +135,6 @@ def openfilename():
 	filename = filedialog.askopenfilename(title ='"pen') 
 	return filename 
 
-# Create a Button
-buttonClose = Button(root, text = 'KiLL that FATG', bd = '5', 
-                          command = root.destroy)                         
-buttonClose.pack()
-buttonClose.place(x = 50, y = 50, bordermode=OUTSIDE, height=30, width=80)
 
  # loading the image 
 img = ImageTk.PhotoImage(Image.open("genrated_test.png")) 
@@ -146,7 +143,18 @@ img = ImageTk.PhotoImage(Image.open("genrated_test.png"))
 panel = tk.Label(root, image = img) 
   
 # setting the application 
-panel.pack(side = "bottom", fill = "both", 
-           expand = "yes") 
+panel.grid(column=0, row=0, ipadx=0, pady=0, sticky=tk.W) 
+
+# Create a Button
+#buttonClose = Button(root, text = 'KiLL that FATG', bd = '5', 
+#                          command = root.destroy)                         
+#buttonClose.pack()
+#buttonClose.place(x = 150, y = 150, bordermode=OUTSIDE, height=30, width=120)
+
+CloseWindow=Button(root, text="KiLL that FATG", command = root.destroy)
+CloseWindow.grid(row=0, column=1, sticky=S, padx=200, pady=100)          
+
+SaveFile=Button(root, text="Save File as", command = root.destroy)
+SaveFile.grid(row=0, column=1, sticky=S, padx=210, pady=150)  
 
 root.mainloop() 
