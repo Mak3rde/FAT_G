@@ -1,6 +1,7 @@
 import sys, textwrap
 from tkinter import *  #loads everything from tk inter 
 from tkinter import filedialog # loads dialog box
+
 import tkinter as tk
 
 try:
@@ -115,7 +116,7 @@ def open_img():
 	img = Image.open(x) 
 	
 	# resize the image and apply a high-quality down sampling filter 
-	img = img.resize((250, 250), Image.ANTIALIAS) 
+	#img = img.resize((250, 250), Image.ANTIALIAS) 
 
 	# PhotoImage class is used to add image to widgets, icons etc 
 	img = ImageTk.PhotoImage(img) 
@@ -154,7 +155,13 @@ panel.grid(column=0, row=0, ipadx=0, pady=0, sticky=tk.W)
 CloseWindow=Button(root, text="KiLL that FATG", command = root.destroy)
 CloseWindow.grid(row=0, column=1, sticky=S, padx=200, pady=100)          
 
-SaveFile=Button(root, text="Save File as", command = root.destroy)
+def save(): 
+    files = [('All Files', '*.*'),  
+             ('Python Files', '*.py'), 
+             ('Text Document', '*.txt')] 
+    file = filedialog(filetypes = files, defaultextension = files) 
+
+SaveFile=Button(root, text="Save File as", command = lambda : save())
 SaveFile.grid(row=0, column=1, sticky=S, padx=210, pady=150)  
 
 root.mainloop() 
