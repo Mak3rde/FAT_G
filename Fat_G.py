@@ -8,7 +8,7 @@ try:
     from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageTk  
 except ImportError:
     print("Please install Pillow from: the web")
-    #print("Please install resize-image from: the web") #not needed it seems
+    
     sys.exit(1)
 
 MHDL = 'MAIN HEADLINE' # MHDL = MAINHEADLINE
@@ -139,22 +139,7 @@ panel = tk.Label(root, image = img)
 # setting the application 
 panel.grid(column=0, row=0, ipadx=0, pady=0, sticky=tk.W) 
 
-# Create a Button
-#buttonClose = Button(root, text = 'KiLL that FATG', bd = '5', 
-#                          command = root.destroy)                         
-#buttonClose.pack()
-#buttonClose.place(x = 150, y = 150, bordermode=OUTSIDE, height=30, width=120)
-
 CloseWindow=Button(root, text="KiLL that FATG", command = root.destroy)
 CloseWindow.grid(row=0, column=1, sticky=S, padx=200, pady=100)          
-
-def save(): 
-    files = [('All Files', '*.*'),  
-             ('Python Files', '*.py'), 
-             ('Text Document', '*.txt')] 
-    file = filedialog(filetypes = files, defaultextension = files) 
-
-SaveFile=Button(root, text="Save File as", command = lambda : save())
-SaveFile.grid(row=0, column=1, sticky=S, padx=210, pady=150)  
 
 root.mainloop() 
