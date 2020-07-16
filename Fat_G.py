@@ -53,20 +53,13 @@ im4 = Image.open('04.png')
 
 #resizue images to Xand Y to 25% of Thumbnail size, better use some images in 1:1 ratio giiirrrlllll
 #im1
-resizedImage = im1.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25)))
-resizedImage.save("img_01_rezised.png")
-
+resizedImage = im1.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25))).save("img_01_rezised.png")
 #im2
-resizedImage = im2.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25)))
-resizedImage.save("img_02_rezised.png")
-
+resizedImage = im2.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25))).save("img_02_rezised.png")
 #im3
-resizedImage = im3.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25)))
-resizedImage.save("img_03_rezised.png")
-
+resizedImage = im3.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25))).save("img_03_rezised.png")
 #im4
-resizedImage = im4.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25)))
-resizedImage.save("img_04_rezised.png")
+resizedImage = im4.resize((round(BIM.size[0]*.25), round(BIM.size[1]*.25))).save("img_04_rezised.png")
 
 #Close original images
 im1.close
