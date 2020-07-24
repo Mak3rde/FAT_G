@@ -155,7 +155,10 @@ def open_img():
 	panel.image = img 
 	panel.grid(row = 2) 
 
-########## give user option to öoad file, not workling , need to understand why   ########## 
+########## give user option to load file, not workling , need to understand why   ########## 
+
+Loadlogo001=Button(root, text="Load image", command = root.destroy)
+Loadlogo001.grid(row=0, column=1, sticky=NW, padx=200, pady=100) 
 
 #open filename
 def openfilename(): 
@@ -175,6 +178,7 @@ panel = tk.Label(root, image = img)
 # setting the application 
 panel.grid(column=0, row=0, ipadx=0, pady=0, sticky=tk.W) 
 
+########## button to close program/window  ########## 
 CloseWindow=Button(root, text="KiLL that FATG", command = root.destroy)
 CloseWindow.grid(row=0, column=1, sticky=S, padx=200, pady=100)          
 
