@@ -132,42 +132,16 @@ root.geometry("1500x1000") # this needs to be changed, its to big for small scre
 ########## make Window not resizable ########## 
 root.resizable(width = False, height = False) 
 
-#--------------this is from stackoverflow need to understand it completle to reshape and slim it down------------#
 ########## open genrated image and show it in gui  ########## 
-#open image 
-def open_img(): 
-	# Select the Imagename from a folder 
-	x = openfilename() 
-
-	# opens the image 
-	img = Image.open(x) 
-	
-	# resize the image and apply a high-quality down sampling filter 
-	#img = img.resize((250, 250), Image.ANTIALIAS) 
-
-	# PhotoImage class is used to add image to widgets, icons etc 
-	img = ImageTk.PhotoImage(img) 
-
-	# create a label 
-	panel = Label(root, image = img) 
-	
-	# set the image as img 
-	panel.image = img 
-	panel.grid(row = 2) 
-
-########## give user option to load file, not workling , need to understand why   ########## 
-
 Loadlogo001=Button(root, text="Load image", command = root.destroy)
 Loadlogo001.grid(row=0, column=1, sticky=NW, padx=200, pady=100) 
 
-#open filename
+#open filename # notwirking needs a button
 def openfilename(): 
 
 	# open file dialog box to select image 
-	# The dialogue box has a title "Open" 
 	filename = filedialog.askopenfilename(title ='"pen') 
 	return filename 
-
 
  # loading the image 
 img = ImageTk.PhotoImage(Image.open("genrated_test.png")) 
